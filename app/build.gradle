@@ -1,0 +1,52 @@
+plugins {
+	id "net.ltgt.errorprone" version "0.0.14"
+}
+
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+	compileSdkVersion 28
+	defaultConfig {
+		applicationId "com.github.magneticflux.androidxdatabindingbug"
+		minSdkVersion 19
+		targetSdkVersion 28
+		versionCode 1
+		versionName "0.1.0"
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	}
+	buildTypes {
+		release {
+			minifyEnabled true
+			useProguard false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+
+	dataBinding {
+		enabled = true
+	}
+}
+
+dependencies {
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+	implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
+	implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+
+	implementation "com.google.dagger:dagger:2.16"
+	implementation 'com.google.dagger:dagger-android:2.16'
+	implementation 'com.google.dagger:dagger-android-support:2.16'
+	kapt "com.google.dagger:dagger-compiler:2.16"
+	kapt 'com.google.dagger:dagger-android-processor:2.16'
+
+	testImplementation 'junit:junit:4.12'
+
+	androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+	androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+}

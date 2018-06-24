@@ -10,6 +10,7 @@ import dagger.android.AndroidInjector
     AppModule::class,
 
     ActivityBuilderModule::class,
+    FragmentBuilderModule::class,
     AndroidInjectionModule::class
 ])
 interface AppComponent : AndroidInjector<MyApplication> {
